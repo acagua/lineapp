@@ -1,0 +1,49 @@
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    &:disabled{
+        background-color: gray;
+        cursor: not-allowed;
+    }
+}
+
+.btn-primary{
+    background-color: $accent;
+    color: $secondary;
+}
+
+.btn-secondary{
+    background-color: $primary;
+    color: $secondary;
+}
+
+.btn-primary-outline{
+    background-color: $secondary;
+    border: 2px solid $accent; //rem en vez de px?
+    color: $accent
+}
+
+.btn-secondary-outline{
+    background-color: $secondary;
+    border: 2px solid $primary;
+    color: $primary;
+}
+
+.btn-block {
+    width:100%;
+}
+
+ 

@@ -1,0 +1,18 @@
+.category__content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.category__card{
+    text-align: center;
+    background-color: $secondary;
+    color: $accent;
+    width: 26vw;
+    margin: 10px 10px 10px 10px;
+    border: 2px solid $accent;
+    border-radius: $primary-radius;
+    padding: 10px 10px 10px 10px;
+    
+}

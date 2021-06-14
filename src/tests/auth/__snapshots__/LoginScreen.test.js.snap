@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas sobre componente auth/LoginScreen Se muestra el componente correctamente 1`] = `
+<div
+  className="auth__main"
+>
+  <div
+    className="auth__form-container"
+  >
+    <h1
+      className="auth__title mb-5"
+    >
+       Login 
+    </h1>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        autoComplete="off"
+        className="auth__input form-control"
+        id="email"
+        name="email"
+        onChange={[Function]}
+        placeholder="Email"
+        type="text"
+        value=""
+      />
+      <input
+        className="auth__input form-control"
+        id="password"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <button
+        className="btn btn-primary btn-block mt-3"
+        disabled={true}
+        type="submit"
+      >
+        Login
+      </button>
+      <div
+        className="auth__alert-error mt-3"
+        id="error"
+      >
+        Email is not valid
+      </div>
+    </form>
+  </div>
+</div>
+`;
