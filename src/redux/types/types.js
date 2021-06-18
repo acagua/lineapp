@@ -14,4 +14,6 @@ export const types = {
     lineAddNewLine: '[Lines] Add new line',
     lineLoadLines: '[Lines] Load line lines',
 
+    companyLoadCompanies: '[Company] Load companies',
+
 }

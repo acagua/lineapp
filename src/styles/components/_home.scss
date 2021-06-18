@@ -1,9 +1,15 @@
 .home__content{
-    display: grid;
-    grid-template-rows: 10vh 1fr;
+    display: flex;
+    // grid-template-rows: 10vh 1fr;
+    justify-content: center;
 }
 
 .home__lines{
     background-color: $secondary;
-    color:$primary;
+}
+
+.home__filters{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }

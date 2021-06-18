@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 
 import { useForm } from '../../hooks/useForm'
-import { startRegister } from '../../actions/auth';
+import { startRegister } from '../../redux/actions/auth';
 
 const errorInitState = {
     error: false,

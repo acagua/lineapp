@@ -1,9 +1,8 @@
 import { types } from "../types/types";
-import { firebase, googleAuthProvider } from '../firebase/firebaseConfig'
+import { db, firebase } from '../../firebase/firebaseConfig'
 import { finishLoading, startLoading } from "./ui";
+import { loadUser } from "../../helpers/loadUser";
 import Swal from 'sweetalert2';
-import { db } from '../firebase/firebaseConfig';
-import { loadUser } from "../helpers/loadUser";
 
 //return si es asincrono, sin return si no lo es
 export const startLoginEmailPassword = (email, password) => {
@@ -49,14 +48,14 @@ export const startRegister = (email, password, name, phone) => {
     }
 }
 
-export const startLoginGoogle = (email, password) => { // si es asínctrona se hace el return (dispatch)
-    return (dispatch) => {
-        firebase.auth().signInWithPopup( googleAuthProvider )
-            .then( ({ user }) => {
-                dispatch (login (user.uid));
-            } );
-    }
-}
+// export const startLoginGoogle = (email, password) => { // si es asínctrona se hace el return (dispatch)
+//     return (dispatch) => {
+//         firebase.auth().signInWithPopup( googleAuthProvider )
+//             .then( ({ user }) => {
+//                 dispatch (login (user.uid));
+//             } );
+//     }
+// }
 
 export const login = (uid) => ({
     type: types.login,

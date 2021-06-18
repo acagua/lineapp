@@ -1,3 +1,8 @@
+.ui__container {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .ui__loader {
     display: flex;
     flex-direction: column;
@@ -8,8 +13,9 @@
 }
 
 .ui__header {
-    background-color:lighten($color: $primary, $amount: 25) ;
-    font-size: 4rem;
+    background-color: $primary;//lighten($color: $primary, $amount: 25) ;
+    display:flex;
+    justify-content: space-between;
 }
 
 .ui__footer {
@@ -20,10 +26,19 @@
     background-color: orange;
 }
 
+
 .link{
     text-decoration: none;
     color: $primary;
     text-decoration: underline;
+    font-size: 1rem;
+}
+
+.link-inverted{
+    text-decoration: none;
+    color: $secondary;
+    text-decoration: underline;
+    font-size: 1rem;
 }
 
 .ui__cards-section{
@@ -33,12 +48,79 @@
     flex-wrap: wrap;
 }
 .ui__card {
-    text-align: center;
     background-color: $secondary;
-    color: $accent;
-    width: 26vw;
-    margin: 10px 10px 10px 10px;
     border: 2px solid $accent;
     border-radius: $primary-radius;
-    padding: 10px 10px 10px 10px;   
+    color: $primary;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    text-decoration: none; 
+    width: 36vw;
+    font-size: 1rem;
+
+    &:hover{
+        background-color: lighten($color: $accent, $amount: 40);
+    }
+}
+
+.ui__card-now{
+    background-color: lighten($color: red, $amount: 45);
+    color: $primary;
+    border: 2px solid lighten($color: red, $amount: 35);
+
+    &:hover{
+        background-color: lighten($color: red, $amount: 40);
+    }
+    // order:1;
+}
+
+.ui__card-next{
+    background-color: lighten($color: yellow, $amount: 40);
+    color: $primary;
+    border: 2px solid lighten($color: yellow, $amount: 15);
+
+    &:hover{
+        background-color: lighten($color: yellow, $amount: 35);
+    }
+    // order:2;
+}
+
+.ui__card-wait{
+    background-color: lighten($color: greenyellow, $amount: 35);
+    color: $primary;
+    border: 2px solid lighten($color: greenyellow, $amount: 5);
+
+    &:hover{
+        background-color: lighten($color: greenyellow, $amount: 30);
+    }
+    // order:3;
+}
+
+.ui__card-add{
+    background-color: $secondary;
+    color: $primary;
+    order:4;
+}
+
+.ui__card-title{
+    font-size: 1.2rem;
+    //color: $primary;
+}
+
+.ui__icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 110px;
+    justify-content: space-around;
+}
+
+.ui__logo-w100 {
+    width:100px;
+}
+
+
+.ui__logo{
+    padding: 10px 10px 10px 10px;
 }

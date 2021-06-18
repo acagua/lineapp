@@ -4,7 +4,7 @@ import { useDispatch} from 'react-redux';
 import validator from "validator";
 // import Swal from "sweetalert2";
 import { Link } from 'react-router-dom';
-import { startLoginEmailPassword } from '../../actions/auth';
+import { startLoginEmailPassword } from '../../redux/actions/auth';
 
 const errorInitState = {
   error: false,

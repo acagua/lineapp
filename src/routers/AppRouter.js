@@ -6,7 +6,7 @@ import { DashboardRoutes } from './DashboardRoutes'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'
 import { firebase } from '../firebase/firebaseConfig'
-import { login, startLoadingUser} from '../actions/auth'
+import { login, startLoadingUser} from '../redux/actions/auth'
 import loaderGif from "../assets/loader.gif";
 
 // import { startLoadingAllIdeas, startLoadingIdeas } from '../actions/idea'
