@@ -12,7 +12,7 @@ let a = '';
                 onChange={handler} 
                 checked={dayOpen}
             />
-            <label htmlFor={`${day}-open`}>{day.charAt(0).toUpperCase() + day.slice(1)}</label>
+            <label htmlFor={`${day}-open`}>{day.charAt(0).toUpperCase() + day.substring(1,3)}</label>
             <input 
                 id={`${day}-start`}
                 type="time" 
