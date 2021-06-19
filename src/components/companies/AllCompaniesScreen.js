@@ -4,8 +4,7 @@ import { Card } from '../ui/Card';
 
 export const AllCompaniesScreen = () => {
 
-    const companies = useSelector ( state => state.companies);
-    console.log(companies);
+    const {companies} = useSelector ( state => state.companies);
     return (
         <>
             <h2> Select a company </h2>

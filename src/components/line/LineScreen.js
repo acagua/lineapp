@@ -9,38 +9,39 @@ export const LineScreen = () => {
     const { lines } = useSelector( state => state.lines );
     //Debe recibir los params con el id de la fila
     
-    const { company, branch, service } = lines.find((line) => (line.id ===  lineId));
+    const { companyId, branchId, serviceId } = lines.find((line) => (line.id ===  lineId));
 
 
-    const handleOutOfLine = (e) => {
-        e.preventDefault();
+    const handleOutOfLine = () => {
 
     }
-    const handleInLineConfirmation = (e) => {
-        e.preventDefault();
+    const handleInLineConfirmation = () => {
 
     }
     return (
         <div>
-            <p>{company}</p>
-            <p>{branch}</p>
-            <p>{service}</p>
-            <buton 
-                className="btn btn-primary-outline"
-                onClick={handleInLineConfirmation}
+            <h2>{companyId}</h2>
+            <p>{branchId}</p>
+            <p>{serviceId}</p>
+            <div className="line__update-status">
 
-            >
-                <i className="fas fa-clock"></i>
-                <span> I'm still in line </span>
-            </buton>
-            <buton 
-                className="btn btn-secondary-outline"
-                onClick={handleOutOfLine}
-
-            >
-                <i className="fas fa-store-slash"></i>
-                <span> Get out of line </span>
-            </buton>
+                <button 
+                    className="btn btn-primary-outline btn-15"
+                    onClick={handleInLineConfirmation}
+                    
+                    >
+                    <i className="fas fa-clock"></i>
+                    <span> Still waiting </span>
+                </button>
+                <button 
+                    className="btn btn-secondary-outline btn-15"
+                    onClick={handleOutOfLine}
+                    
+                    >
+                    <i className="fas fa-store-slash"></i>
+                    <span> Enough, I'm out </span>
+                </button>
+            </div>
         </div>
     )
 }

@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Card } from '../ui/Card';
 
-export const BranchScreen = () => {
+export const CompanyBranchScreen = () => {
 
     const { companyId, branchId } = useParams();
     
-    const companies = useSelector( state => state.companies );
+    const {companies} = useSelector( state => state.companies );
 
     const { branches } = companies.find((company) => (company.id === companyId));
 
@@ -15,7 +15,7 @@ export const BranchScreen = () => {
 
     return (
         <div>
-            <h2> Branch {name}</h2>
+            <h2> Branch: {name}</h2>
             <p> Address: {address}</p>
             <ul>
                 {
@@ -34,6 +34,7 @@ export const BranchScreen = () => {
                     services.map( (service, index) => (
                         <Card 
                         key={index}
+                        title={service.name}
                         {...service}
                         link={`/company/${companyId}/branch/${branchId}/service/${service.id}`}
                         />

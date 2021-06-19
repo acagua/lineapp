@@ -60,7 +60,7 @@
     font-size: 1rem;
 
     &:hover{
-        background-color: lighten($color: $accent, $amount: 40);
+        background-color: lighten($color: $accent, $amount: 50);
     }
 }
 
@@ -108,18 +108,29 @@
     //color: $primary;
 }
 
+.ui__text-now{
+    color:red;
+}
+
+.ui__text-next{
+    color:orange;
+}
+
+.ui__text-wait{
+    color:green;
+}
+
 .ui__icons {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 110px;
+    width: 200px;
     justify-content: space-around;
 }
 
 .ui__logo-w100 {
     width:100px;
 }
-
 
 .ui__logo{
     padding: 10px 10px 10px 10px;

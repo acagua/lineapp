@@ -33,12 +33,33 @@ export const Navbar = ( ) => {
                         <i className="fas fa-user fa-2x"></i>
                         {/* <span> My Account </span> * /}
                     </Link> */}
+                    <Link 
+                        to="/new-company"
+                        className="link-inverted" 
+                    >
+                        <i className="fas fa-building fa-2x"></i>
+                        {/* <span> New Company </span> */}
+                    </Link>
+                    <Link 
+                        to="/new-branch"
+                        className="link-inverted" 
+                    >
+                        <i className="fas fa-store fa-2x"></i>
+                        {/* <span> New Branch </span> */}
+                    </Link>
+                    <Link 
+                        to="/new-service"
+                        className="link-inverted" 
+                    >
+                        <i className="fas fa-concierge-bell fa-2x"></i>
+                        {/* <span> My Service </span> */}
+                    </Link>
                     <button 
                         className="btn link-inverted btn-icon-text" 
                         onClick={ handleLogout }
                         >
                         <i className="fas fa-sign-out-alt fa-2x"/>
-                        <span>  Logout</span>
+                        {/* <span>  Logout</span> */}
                     </button>
                 </div>
             </div>

@@ -8,6 +8,7 @@ import { PublicRoute } from './PublicRoute'
 import { firebase } from '../firebase/firebaseConfig'
 import { login, startLoadingUser} from '../redux/actions/auth'
 import loaderGif from "../assets/loader.gif";
+import { startLoadingCompanies } from '../redux/actions/companies'
 
 // import { startLoadingAllIdeas, startLoadingIdeas } from '../actions/idea'
 
@@ -27,6 +28,7 @@ export const AppRouter = () => {
                 dispatch( login( user.uid ) ); // TODO: Traer dinámico el rol
                 setIsLoggedIn(true);
                 dispatch ( startLoadingUser (user.uid ) );
+                dispatch ( startLoadingCompanies () );
                 // dispatch ( startLoadingUser (user.uid ) );
                 // dispatch ( startLoadingIdeas ( user.uid ) );
                 // dispatch ( startLoadingAllIdeas ( ) );

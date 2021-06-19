@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { cardTypes } from '../../lists/cardTypes'
-import { StatusFilters } from '../home/StatusFilters'
+// import { StatusFilters } from '../home/StatusFilters'
 import { Card } from '../ui/Card'
 import { NewLineBlock } from './NewLineBlock'
 
@@ -25,7 +25,7 @@ export const LinesSection = () => {
                     lines.map( (line, index) => (
                         <Card
                         key={index}
-                        title={line.company}
+                        title={line.companyName}
                         type={cardTypes.line}
                         {...line}
                         link={`/line/${line.id}`}

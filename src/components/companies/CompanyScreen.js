@@ -7,7 +7,7 @@ export const CompanyScreen = () => {
 
     const { companyId } = useParams();
 
-    const companies = useSelector( state => state.companies );
+    const {companies} = useSelector( state => state.companies );
 
     const company = companies.find((company) => (company.id === companyId));
 
@@ -21,9 +21,10 @@ export const CompanyScreen = () => {
                 {
                     branches.map( (branch, index) => (
                         <Card
-                        key={index}
-                        {...branch}
-                        link={`/company/${companyId}/branch/${branch.id}`}
+                            key={index}
+                            title={branch.name}
+                            {...branch}
+                            link={`/company/${companyId}/branch/${branch.id}`}
                         />
                         ))
                 }

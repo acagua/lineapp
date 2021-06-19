@@ -4,18 +4,23 @@ import { cardTypes } from '../../lists/cardTypes'
 import { timeAlerts } from '../../lists/timeAlerts'
 // import image from '../../assets/logoDummy.png';
 
-export const Card = ({title='NO TITLE', type, branch, service, timeRemaining=null, link="/"}) => {
+export const Card = ({title='NO TITLE', type, branchName, serviceName, timeRemaining=null, link="/"}) => {
 
+    //Test: Look if its better only text than changing color to the whole card
     let cardStyle = '';
-    if(!timeRemaining){
-        cardStyle = ''
-    } else if (timeRemaining < timeAlerts.now){
-        cardStyle = 'ui__card-now';
-    } else if (timeRemaining < timeAlerts.next){
-        cardStyle = 'ui__card-next';
-    } else {
-        cardStyle = 'ui__card-wait';
-    }
+    let remainingTimeStyle = '';
+    if(timeRemaining){
+        if (timeRemaining < timeAlerts.now){
+            // cardStyle = 'ui__card-now';
+            remainingTimeStyle = 'ui__text-now';
+        } else if (timeRemaining < timeAlerts.next){
+            // cardStyle = 'ui__card-next';
+            remainingTimeStyle = 'ui__text-next';
+        } else {
+            // cardStyle = 'ui__card-wait';
+            remainingTimeStyle = 'ui__text-wait';
+        }
+    } 
 
     return (
             <Link className={`ui__card ${cardStyle}`} to={link}>
@@ -24,9 +29,9 @@ export const Card = ({title='NO TITLE', type, branch, service, timeRemaining=nul
                     {
                         (type === cardTypes.line) &&
                             <div>
-                                <p> <b>Branch:</b> {branch} </p>
-                                <p> <b>Service:</b> {service} </p>
-                                <p> <b>Waiting Time:</b> {timeRemaining} </p>
+                                <p> <b>BranchId:</b> {branchName} </p>
+                                <p> <b>ServiceId:</b> {serviceName} </p>
+                                <p className={`${remainingTimeStyle}`}> <b>Remaining Time:</b> {timeRemaining} </p>
                             </div>
                     }
 

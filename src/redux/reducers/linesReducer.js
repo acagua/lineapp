@@ -4,30 +4,30 @@ const initialState = {
     lines: [
         {
             id:'l1',
-            company:'Bancolombia',
-            branch:'CL 122',
-            service:'Cashier',
+            companyId:'Bancolombia',
+            branchId:'CL 122',
+            serviceId:'Cashier',
             timeRemaining: 40
         },
         {
             id:'l1',
-            company:'Avianca',
-            branch:'Unicentro',
-            service:'Change Flight',
+            companyId:'Avianca',
+            branchId:'Unicentro',
+            serviceId:'Change Flight',
             timeRemaining: 10
         },
         {
             id:'l1',
-            company:'Davivienda',
-            branch:'Unicentro',
-            service:'Advisory',
+            companyId:'Davivienda',
+            branchId:'Unicentro',
+            serviceId:'Advisory',
             timeRemaining: 50
         },
         {
             id:'l1',
-            company:'Andres Carne de Res',
-            branch:'Usaquen',
-            service:'Food',
+            companyId:'Andres Carne de Res',
+            branchId:'Usaquen',
+            serviceId:'Food',
             timeRemaining: 9
         },
     ],
@@ -42,6 +42,11 @@ export const linesReducer = (state = initialState, action) => {
                     ...state.lines,
                     action.payload
                 ]
+            }
+        case types.lineLoadLines:
+            return {
+                ...state,
+                lines:action.payload
             }
         default:
             return state
