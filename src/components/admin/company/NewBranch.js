@@ -20,77 +20,59 @@ export const NewBranch = () => {
         latitude:'',
         longitude:'',
         openHours:[
-            // {
-            //     day:0,
-            //     startHour:'00:00',
-            //     endHour:'05:00',
-            // },
-            // {
-            //     day:1,
-            //     startHour:'02:00',
-            //     endHour:'07:00',
-            // }
+            {
+                day:0,
+                open: true,
+                name: 'monday',
+                startHour:'00:00',
+                endHour:'00:00',
+            },
+            {
+                day:1,
+                open: true,
+                name: 'tuesday',
+                startHour:'00:00',
+                endHour:'00:00',
+            },
+            {
+                day:2,
+                open: true,
+                name: 'wednesday',
+                startHour:'00:00',
+                endHour:'00:00',
+            },
+            {
+                day:3,
+                open: true,
+                name: 'thursday',
+                startHour:'00:00',
+                endHour:'00:00',
+            },
+            {
+                day:4,
+                open: true,
+                name: 'friday',
+                startHour:'00:00',
+                endHour:'00:00',
+            },
+            {
+                day:5,
+                open: true,
+                name: 'saturday',
+                startHour:'00:00',
+                endHour:'00:00',
+            },
+            {
+                day:6,
+                open: false,
+                name: 'sunday',
+                startHour:'00:00',
+                endHour:'00:00',
+            }
         ],
     };
 
-    //TODO Optimizar arreglo para estandarizar nombres podría manejarse con el param index de map.  
-    // Doc: https://stackoverflow.com/questions/55987953/how-do-i-update-states-onchange-in-an-array-of-object-in-react-hooks
-
-    const initOpenHoursState = {
-        monId:'monday',
-        monOpen:false,
-        monOpenName:'monOpen',
-        monStartHour:'00:00',
-        monStartName:'monStartHour',
-        monEndHour:'00:00',
-        monEndName:'monEndHour',
-        tueId:'tuesday',
-        tueOpen:false,
-        tueOpenName:'tueOpen',
-        tueStartHour:'00:00',
-        tueStartName:'tueStartHour',
-        tueEndHour:'00:00',
-        tueEndName:'tueEndHour',
-        wedId:'wednesday',
-        wedOpen:false,
-        wedOpenName:'wedOpen',
-        wedStartHour:'00:00',
-        wedStartName:'wedStartHour',
-        wedEndHour:'00:00',
-        wedEndName:'wedEndHour',
-        thuId:'thursday',
-        thuOpen:false,
-        thuOpenName:'thuOpen',
-        thuStartHour:'00:00',
-        thuStartName:'thuStartHour',
-        thuEndHour:'00:00',
-        thuEndName:'thuEndHour',
-        friId:'friday',
-        friOpen:false,
-        friOpenName:'friOpen',
-        friStartHour:'00:00',
-        friStartName:'friStartHour',
-        friEndHour:'00:00',
-        friEndName:'friEndHour',
-        satId:'saturday',
-        satOpen:false,
-        satOpenName:'satOpen',
-        satStartHour:'00:00',
-        satStartName:'satStartHour',
-        satEndHour:'00:00',
-        satEndName:'satEndHour',
-        sunId:'sunday',
-        sunOpen:false,
-        sunOpenName:'sunOpen',
-        sunStartHour:'00:00',
-        sunStartName:'sunStartHour',
-        sunEndHour:'00:00',
-        sunEndName:'sunEndHour',
-    }
-
     const [formValues, setFormValues] = useState(initState)
-
-    const [openHours, setOpenHours] = useState(initOpenHoursState);
 
     const [branchCreated, setBranchCreated] = useState(false);
 
@@ -107,6 +89,11 @@ export const NewBranch = () => {
                 </div>
             </>
         )
+    } else if(!formValues.company) {
+        setFormValues({
+            ...formValues,
+            company:admin.companies[0]?.id
+        })
     }
 
     if(admin.companies.length === 0){
@@ -123,11 +110,23 @@ export const NewBranch = () => {
 		})
     }
 
-    const handleInputChangeOpeningHours = ({target}) => {
-        setOpenHours({
-			...openHours,
-			[target.name]: (target.type === 'checkbox') ? target.checked : target.value
-		})
+    const handleInputChangeOpeningHours = (dayIndex,e) => {
+        setFormValues({
+            ...formValues,
+            openHours: formValues.openHours.map( (day,index) => 
+                {
+                    if(dayIndex !== index ){
+                        return day;
+                    } else {
+                        let updatedDay = {
+                            ...formValues.openHours[index],
+                            [e.target.name] : (e.target.type === 'checkbox') ? e.target.checked : e.target.value
+                        };
+                        return updatedDay
+                    }
+                }
+            )
+        })        
     }
 
     const handleSubmit = async (e) => {
@@ -182,77 +181,25 @@ export const NewBranch = () => {
                 />
                 <fieldset>
                     <legend>Opening Hours</legend>
-                        <OpeningHours 
-                            day={openHours.monId}
-                            dayOpen = {openHours.monOpen}
-                            openName={openHours.monOpenName}
-                            startHour={openHours.monStartHour}
-                            startName={openHours.monStartName}
-                            endHour= {openHours.monEndHour}
-                            endName={openHours.monStartHour}
-                            handler={handleInputChangeOpeningHours}
-                        />
-                        <OpeningHours 
-                            day={openHours.tueId}
-                            dayOpen = {openHours.tueOpen}
-                            openName={openHours.tueOpenName}
-                            startHour={openHours.tueStartHour}
-                            startName={openHours.tueStartName}
-                            endHour= {openHours.tueEndHour}
-                            endName={openHours.tueStartHour}
-                            handler={handleInputChangeOpeningHours}
-                        />
-                        <OpeningHours 
-                            day={openHours.wedId}
-                            dayOpen = {openHours.wedOpen}
-                            openName={openHours.wedOpenName}
-                            startHour={openHours.wedStartHour}
-                            startName={openHours.wedStartName}
-                            endHour= {openHours.wedEndHour}
-                            endName={openHours.wedStartHour}
-                            handler={handleInputChangeOpeningHours}
-                        />
-                        <OpeningHours 
-                            day={openHours.thuId}
-                            dayOpen = {openHours.thuOpen}
-                            openName={openHours.thuOpenName}
-                            startHour={openHours.thuStartHour}
-                            startName={openHours.thuStartName}
-                            endHour= {openHours.thuEndHour}
-                            endName={openHours.thuStartHour}
-                            handler={handleInputChangeOpeningHours}
-                        />
-                        <OpeningHours 
-                            day={openHours.friId}
-                            dayOpen = {openHours.friOpen}
-                            openName={openHours.friOpenName}
-                            startHour={openHours.friStartHour}
-                            startName={openHours.friStartName}
-                            endHour= {openHours.friEndHour}
-                            endName={openHours.friStartHour}
-                            handler={handleInputChangeOpeningHours}
-                        />
-                        <OpeningHours 
-                            day={openHours.satId}
-                            dayOpen = {openHours.satOpen}
-                            openName={openHours.satOpenName}
-                            startHour={openHours.satStartHour}
-                            startName={openHours.satStartName}
-                            endHour= {openHours.satEndHour}
-                            endName={openHours.satStartHour}
-                            handler={handleInputChangeOpeningHours}
-                        />
-                        <OpeningHours 
-                            day={openHours.sunId}
-                            dayOpen = {openHours.sunOpen}
-                            openName={openHours.sunOpenName}
-                            startHour={openHours.sunStartHour}
-                            startName={openHours.sunStartName}
-                            endHour= {openHours.sunEndHour}
-                            endName={openHours.sunStartHour}
-                            handler={handleInputChangeOpeningHours}
-                        />
-                </fieldset>
+                        <div className="admin__days-inputs-group">
+                        {
+                            formValues.openHours.map((day, index) => (
+                                <OpeningHours 
+                                    key={index}
+                                    day={day.name}
+                                    dayOpen = {day.open}
+                                    openName="open"
+                                    startHour={day.startHour}
+                                    startName="startHour"
+                                    endHour= {day.endHour}
+                                    endName="endHour"
+                                    handler={(e)=>handleInputChangeOpeningHours(index, e)}
+                                />
+                            ))
+                        }
+                        </div>
+                       
+                </fieldset> 
                 <button
                     type="submit"
                     className="btn btn-primary btn-block mt-2"

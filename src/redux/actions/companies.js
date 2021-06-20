@@ -21,12 +21,13 @@ export const companyAdded = (company) => ({
     payload: company
 });
 
-export const startAddingBranch = (companyId, branch) => {
+export const startAddingBranch = (branch) => {
     
     return async (dispatch) => {
         dispatch( startLoading());
         
-        await db.doc(`companiesTest/${ companyId }/branches/${branch.id}`).set( branch );
+        await db.doc(`companiesTest/${ branch.company }/branches/${branch.id}`).set( branch );
+        console.log(branch);
         dispatch (branchAdded (branch));
         Swal.fire('Success', 'Branch saved! Let\'s create a service now', 'success');
         dispatch( finishLoading());
@@ -43,17 +44,16 @@ export const startLoadingCompanies = ( ) => {
     return async (dispatch) => {
         dispatch( startLoading());
         
-        const companiessSnap = await db.collection(`companiesTest`).get();
+        const companiesSnap = await db.collection(`companiesTest`).get();
 
         const companies = [];
 
-        companiessSnap.forEach ( snapHijo => {
+        companiesSnap.forEach ( snapHijo => {
             companies.push({
                 id: snapHijo.id,
                 ...snapHijo.data()
             })
         });
-        console.log(companies);
         dispatch(loadedCompanies(companies));
         dispatch( finishLoading());
     }
@@ -62,4 +62,29 @@ export const startLoadingCompanies = ( ) => {
 export const loadedCompanies = (companies) => ({
     type: types.companyLoadCompanies,
     payload: companies
+});
+
+
+export const startLoadingBranches = ( ) => {
+    return async (dispatch) => {
+        dispatch( startLoading());
+        
+        const branchesSnap = await db.collectionGroup(`branches`).get();
+
+        const branches = [];
+
+        branchesSnap.forEach ( snapHijo => {
+            branches.push({
+                id: snapHijo.id,
+                ...snapHijo.data()
+            })
+        });
+        dispatch(loadedBranches(branches));
+        dispatch( finishLoading());
+    }
+}
+
+export const loadedBranches = (branches) => ({
+    type: types.companyLoadBranches,
+    payload: branches
 });

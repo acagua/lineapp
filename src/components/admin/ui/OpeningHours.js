@@ -1,18 +1,18 @@
 import React from 'react'
 
-export const OpeningHours = ( { day, dayOpen, openName, startHour, startName, endHour, endName, handler}) => {
-let a = '';
-
+export const OpeningHours = ( { day="NONE", dayOpen="NONE", openName="NONE", startHour="NONE", startName="NONE", endHour="NONE", endName="NONE", handler}) => {
     return (
-        <div>
-            <input 
-                id={`${day}-open`}
-                type="checkbox" 
-                name={openName}
-                onChange={handler} 
-                checked={dayOpen}
-            />
-            <label htmlFor={`${day}-open`}>{day.charAt(0).toUpperCase() + day.substring(1,3)}</label>
+        <>
+            <div>
+                <input 
+                    id={`${day}-open`}
+                    type="checkbox" 
+                    name={openName}
+                    onChange={handler} 
+                    checked={dayOpen}
+                />
+                <label htmlFor={`${day}-open`}>{day.charAt(0).toUpperCase() + day.substring(1,3)}</label>
+            </div>
             <input 
                 id={`${day}-start`}
                 type="time" 
@@ -39,6 +39,6 @@ let a = '';
                 disabled={!dayOpen} 
                 required
             />
-        </div>
+        </>
     )
 }

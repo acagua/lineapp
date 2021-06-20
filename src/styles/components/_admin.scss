@@ -38,6 +38,12 @@
     }
 }
 
+.admin__days-inputs-group{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    text-align: center;
+}
+
 .admin__input-small{
     color: $primary;
     border: 0px;
@@ -46,7 +52,7 @@
     margin-bottom: 20px;
     margin-left: 10px;
     height: 20px;
-    width:30%;
+    width:80%;
     background-color: transparent;
     text-align: center;
 

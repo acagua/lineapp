@@ -386,12 +386,20 @@ export const companyReducer = (state =initState, action) => {
                     companies:[...state.admin.companies, action.payload]
                 }
             }
+        case types.companyLoadBranches:
+            return {
+                ...state,
+                admin:{
+                    ...state.admin,
+                    branches: action.payload,
+                }
+            }
         case types.companyAddBranch:
             return {
                 ...state,
                 admin:{
                     ...state.admin,
-                    branches:[...state.branches, action.payload]
+                    branches:[...state.admin.branches, action.payload]
                 }
             }
         case types.companyAddService:

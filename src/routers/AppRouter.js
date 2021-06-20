@@ -8,7 +8,7 @@ import { PublicRoute } from './PublicRoute'
 import { firebase } from '../firebase/firebaseConfig'
 import { login, startLoadingUser} from '../redux/actions/auth'
 import loaderGif from "../assets/loader.gif";
-import { startLoadingCompanies } from '../redux/actions/companies'
+import { startLoadingBranches, startLoadingCompanies } from '../redux/actions/companies'
 
 // import { startLoadingAllIdeas, startLoadingIdeas } from '../actions/idea'
 
@@ -29,6 +29,7 @@ export const AppRouter = () => {
                 setIsLoggedIn(true);
                 dispatch ( startLoadingUser (user.uid ) );
                 dispatch ( startLoadingCompanies () );
+                dispatch ( startLoadingBranches () );
                 // dispatch ( startLoadingUser (user.uid ) );
                 // dispatch ( startLoadingIdeas ( user.uid ) );
                 // dispatch ( startLoadingAllIdeas ( ) );
