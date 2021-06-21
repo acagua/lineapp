@@ -27,7 +27,6 @@ export const LineScreen = () => {
     const service = user.services.find(service => service.id === serviceId);
     
     useEffect(() => {
-        console.log(lines)
         const fetchServices =  async () => {
             if(lines.length > 0){
                 if(user.branches.length === 0 && companyId){
@@ -79,12 +78,14 @@ export const LineScreen = () => {
     //     return <Redirect to="/"/>
     // }
     return (
-        <div>
-            <h2>{companyName}</h2>
+        <>
+            <header>
+                <h2>{companyName}</h2>
+            </header>
             <p>{branchName} - {address}</p>
             <p>{name}</p>
             <p> Time Remaining: {queueTime} minutes</p>
-            <div className="line__update-status">
+            <div className="line__update-status" ariarole="action buttons">
 
                 {/* <button 
                     className="btn btn-primary-outline btn-15"
@@ -103,6 +104,6 @@ export const LineScreen = () => {
                     <span> Enough, I'm out </span>
                 </button>
             </div>
-        </div>
+        </>
     )
 }

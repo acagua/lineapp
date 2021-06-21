@@ -21,10 +21,10 @@ export const HomeScreen = () => {
     } 
     return (
         <>
-                {/* <div className="ui__search-bar"> SearchComponent </div> */}
-                <div className="home__lines"> 
-                    <LinesSection />
-                </div>
+            {/* <div className="ui__search-bar"> SearchComponent </div> */}
+            <div className="home__lines" ariarole="lines section"> 
+                <LinesSection />
+            </div>
         </>
     )
 }

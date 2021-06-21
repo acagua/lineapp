@@ -6,9 +6,11 @@ export const AllCompaniesScreen = () => {
 
     const {user} = useSelector ( state => state.companies);
     return (
-        <>
-            <h2> Select a company </h2>
-            <div className="ui__cards-section">
+        <>  
+            <header>
+                <h2> Select a company </h2>
+            </header>
+            <div className="ui__cards-section" ariarole="companies list">
                 {
                     user.companies.map( (company, index) => (
                         <Card

@@ -56,9 +56,11 @@ export const CompanyScreen = () => {
     // TODO Add Google Maps with flag references https://dev.to/jessicabetts/how-to-use-google-maps-api-and-react-js-26c2
     // branches[i].latitude branches[i].longitude
     return (
-        <div>
-            <h2>{name}</h2>
-            <div className="ui__cards-section">
+        <>
+            <header>
+                <h2>{name}</h2>
+            </header>
+            <div className="ui__cards-section" ariarole="branches list">
                 {
                     branches.map( (branch, index) => (
                         <Card
@@ -70,6 +72,6 @@ export const CompanyScreen = () => {
                         ))
                 }
             </div>
-        </div>
+        </>
     )
 }

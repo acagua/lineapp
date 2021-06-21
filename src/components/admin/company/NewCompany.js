@@ -34,7 +34,7 @@ export const NewCompany = () => {
     }
 
     return (
-        <div className="admin__main">
+        <div className="admin__main" ariarole="container">
             <h1 className="admin__title"> New Company </h1>
             <form className="admin__form" onSubmit={handleSubmit}>
                 <label htmlFor="name">Name</label>
@@ -45,6 +45,7 @@ export const NewCompany = () => {
                     name="name"
                     onChange={handleInputChange}
                     value={name}
+                    aria-required="true"
                     required
                 />
                 <button

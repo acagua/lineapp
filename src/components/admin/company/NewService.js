@@ -100,13 +100,14 @@ export const NewService = () => {
     }
 
     return (
-        <div className="admin__main">
+        <div className="admin__main" ariarole="container">
             <h1 className="admin__title"> New Service </h1>
             <form className="admin__form" onSubmit={handleSubmit}>
-                <label>
+                <label htmlFor="company-list">
                     Company
                     <select 
                         className="admin__input"
+                        id="company-list"
                         name="company"
                         onChange={handleInputChange}
                         value={company}
@@ -118,10 +119,11 @@ export const NewService = () => {
                         }
                     </select>
                 </label>
-                <label>
+                <label htmlFor="branch-list">
                     Branch
                     <select 
                         className="admin__input"
+                        id="branch-list"
                         name="branch"
                         onChange={handleInputChange}
                         value={branch}
@@ -141,6 +143,7 @@ export const NewService = () => {
                     name="name"
                     onChange={handleInputChange}
                     value={name}
+                    aria-required="true"
                     required
                 />
                 <label htmlFor="minutes-per-user">Minutes per user</label>
@@ -152,6 +155,7 @@ export const NewService = () => {
                     name="minutesPerUser"
                     onChange={handleInputChange}
                     value={minutesPerUser}
+                    aria-required="true"
                     required
                 />
                 <label htmlFor="attending-resources">Attending Resources</label>
@@ -163,6 +167,7 @@ export const NewService = () => {
                     name="attendingResources"
                     onChange={handleInputChange}
                     value={attendingResources}
+                    aria-required="true"
                     required
                 />
                 <button

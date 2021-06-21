@@ -94,29 +94,29 @@ export const CompanyServiceScreen = () => {
                 <h2>
                     Service: {name}
                 </h2>
-                <p>
-                    Company: {companyName}
-                </p>
-                <p>
-                    Branch: {branchName} - {address}
-                </p>
-                <p>
-                    People Attending: {attendingResources}
-                </p>
-                <p>
-                    Current users in line: {queue.length}
-                </p>
-                <p>
-                    minutes per user {minutesPerUser}
-                </p>
-                <p>
-                    Queue time: {queueTime}
-                </p>
-                <p className={(isOpen(nowDate, startHour, endHour,open))? 'ui__text-wait' : 'ui__text-now' }>
-                    Status: {(isOpen(nowDate, startHour, endHour,open))?'Open' : 'Closed'}
-                </p>
             </header>
-            <div className="category__content">
+            <p>
+                Company: {companyName}
+            </p>
+            <p>
+                Branch: {branchName} - {address}
+            </p>
+            <p>
+                People Attending: {attendingResources}
+            </p>
+            <p>
+                Current users in line: {queue.length}
+            </p>
+            <p>
+                minutes per user {minutesPerUser}
+            </p>
+            <p>
+                Queue time: {queueTime}
+            </p>
+            <p className={(isOpen(nowDate, startHour, endHour,open))? 'ui__text-wait' : 'ui__text-now' }>
+                Status: {(isOpen(nowDate, startHour, endHour,open))?'Open' : 'Closed'}
+            </p>
+            <div className="category__content" ariarole="submit button container">
                 <button className="btn btn-primary btn-15" onClick={handleSubmitAdd} disabled={!isOpen(nowDate, startHour, endHour,open)}>
                     Get in line!
                 </button>

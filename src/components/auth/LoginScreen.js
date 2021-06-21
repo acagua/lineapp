@@ -60,9 +60,11 @@ export const LoginScreen = () => {
         return true;
     };
     return (
-        <div className="auth__main">
-            <div className="auth__form-container">
-                <h1 className="auth__title mb-5"> Login </h1>
+        <div className="auth__main" ariarole="background">
+            <div className="auth__form-container" ariarole="container">
+                <header>
+                    <h1 className="auth__title mb-5"> Login </h1>
+                </header>
                 <form className="mb-3" onSubmit={ handleLogin }>
                     {
                         (error) && 
@@ -81,16 +83,19 @@ export const LoginScreen = () => {
                         autoComplete="off"
                         value = { email }
                         onChange = { handleInputChange }
+                        aria-required="true"
+                        required
                     />
                     <input 
                         type="password"
                         id="password"
                         placeholder="Password"
                         name="password"
-                        // className={`auth__input form-control ${ !validPassword && 'is-invalid' }`}
                         className={`auth__input form-control`}
                         value = { password }
                         onChange = { handleInputChange }
+                        aria-required="true"
+                        required
                     />
                     <button
                         type="submit"

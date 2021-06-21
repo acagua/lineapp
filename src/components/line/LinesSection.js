@@ -23,14 +23,14 @@ export const LinesSection = () => {
 
     return (
         <>
-            <div className="home__filters">
+            <header className="home__filters">
                 <h2>My Lines</h2>
                 <button className="btn" onClick={handleUpdate}> 
                     <i className="fas fa-sync-alt fa-2x"/>
                 </button>
                 {/* <StatusFilters /> */}
-            </div>
-            <div className="ui__cards-section">
+            </header>
+            <div className="ui__cards-section" ariarole="lines container">
                 <NewLineBlock />
                 {
                     lines.map( (line, index) => (

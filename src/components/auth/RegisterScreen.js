@@ -95,8 +95,8 @@ const errorInitState = {
     }
 
     return (
-        <div className="auth__main">
-            <div className="auth__form-container">
+        <div className="auth__main" ariarole="background">
+            <div className="auth__form-container" ariarole="container">
                 <h1 className="auth__title mb-5"> New account </h1>
                 <form className="mb-3" onSubmit={ handleRegister }>
                     {
@@ -115,18 +115,10 @@ const errorInitState = {
                         autoComplete="off"
                         value = { name }
                         onChange = { handleInputChange }
+                        aria-label="name"
+                        aria-required="true"
                         required
                     />
-                    {/* <input 
-                        type="number"
-                        placeholder="Phone"
-                        name="phone"
-                        className={`auth__input form-control`}
-                        autoComplete="off"
-                        // value = { email }
-                        // onChange = { handleInputChange }
-                        required
-                    /> */}
                     <input 
                         type="tel"
                         placeholder="Phone"
@@ -135,6 +127,8 @@ const errorInitState = {
                         autoComplete="off"
                         value = { phone }
                         onChange = { handleInputChange }
+                        aria-label="phone"
+                        aria-required="true"
                         required
                     />
                     <input 
@@ -145,6 +139,8 @@ const errorInitState = {
                         autoComplete="off"
                         value = { email }
                         onChange = { handleInputChange }
+                        aria-label="email"
+                        aria-required="true"
                         required
                     />
                     <input 
@@ -156,6 +152,8 @@ const errorInitState = {
                         className={`auth__input form-control`}
                         value = { password }
                         onChange = { handleInputChange }
+                        aria-label="password"
+                        aria-required="true"
                         required
                     />
                     <input 
@@ -167,6 +165,8 @@ const errorInitState = {
                         className={`auth__input form-control`}
                         value = { password2 }
                         onChange = { handleInputChange }
+                        aria-label="password confirmation"
+                        aria-required="true"
                         required
                     />
                     <button

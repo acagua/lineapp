@@ -143,12 +143,13 @@ export const NewBranch = () => {
     }
 
     return (
-        <div className="admin__main">
+        <div className="admin__main" ariarole="container">
             <h1 className="admin__title"> New Branch </h1>
             <form className="admin__form" onSubmit={handleSubmit}>
-                <label>
+                <label htmlFor="company-list">
                     Company
                     <select 
+                        id="company-list"
                         className="admin__input"
                         name="company"
                         onChange={handleInputChange}
@@ -169,6 +170,7 @@ export const NewBranch = () => {
                     name="name"
                     onChange={handleInputChange}
                     value={name}
+                    aria-required="true"
                     required
                 />
                 <label htmlFor="address">Address</label>
@@ -179,11 +181,12 @@ export const NewBranch = () => {
                     name="address"
                     onChange={handleInputChange}
                     value={address}
+                    aria-required="true"
                     required
                 />
                 <fieldset>
                     <legend>Opening Hours</legend>
-                        <div className="admin__days-inputs-group">
+                        <div className="admin__days-inputs-group" ariarole="opening hours per day">
                         {
                             formValues.openHours.map((day, index) => (
                                 <OpeningHours 
@@ -200,7 +203,6 @@ export const NewBranch = () => {
                             ))
                         }
                         </div>
-                       
                 </fieldset> 
                 <button
                     type="submit"

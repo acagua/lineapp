@@ -73,10 +73,12 @@ export const CompanyBranchScreen = () => {
 
 
     return (
-        <div>
-            <h2> {companyName}-{name}</h2>
+        <>
+            <header>
+                <h2> {companyName}-{name}</h2>
+            </header>
             <p> {address}</p>
-            <ul>
+            <ul ariarole="branch available hours">
                 {
                     openHours.map((day, index) => (
                         <li
@@ -89,7 +91,7 @@ export const CompanyBranchScreen = () => {
                 }
             </ul>
             <h3>Services: </h3>
-            <div className="ui__cards-section">
+            <div className="ui__cards-section" ariarole="services list">
                 {
                     services.map( (service, index) => (
                         <Card 
@@ -101,6 +103,6 @@ export const CompanyBranchScreen = () => {
                         ))
                 }
             </div>
-        </div>
+        </>
     )
 }
