@@ -7,12 +7,12 @@ export const CompanyServiceScreen = () => {
 
     const { companyId, branchId, serviceId } = useParams();
     
-    const {companies} = useSelector( state => state.companies );
+    const {user} = useSelector( state => state.companies );
     const { uid } = useSelector( state => state.auth );
 
     const dispatch = useDispatch();
 
-    const { branches } = companies.find((company) => (company.id === companyId));
+    const { branches } = user.find((company) => (company.id === companyId));
 
     const { services } = branches.find((branch) => (branch.id === branchId));
 

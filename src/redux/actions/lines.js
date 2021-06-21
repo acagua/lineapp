@@ -11,7 +11,7 @@ export const startAddingToQueue = (uid, companyId, branchId, serviceId, queueTim
         const queueFirebase = await db.collection(`companies/${companyId}/branches/${branchId}/services`).doc(serviceId).get();
         
         const queue = queueFirebase.data()?.queue||[];
-        console.log(queue);
+        console.log('queue',queue);
         
         db.collection(`companies/${companyId}/branches/${branchId}/services`).doc(serviceId).update({
             queue: [...queue, uid],
@@ -42,7 +42,6 @@ export const startLoadingLines = (uid) => {
     return async (dispatch) => {
         dispatch( startLoading());
         const services = await loadLines(uid);
-        console.log(services);
         let lines = [];
         if(services.length > 0){
 

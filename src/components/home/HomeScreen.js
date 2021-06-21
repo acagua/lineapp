@@ -1,19 +1,26 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { startLoadingLines } from '../../redux/actions/lines';
 import { LinesSection } from '../line/LinesSection'
-
+import loaderGif from "../../assets/loader.gif";
+import { useSelector } from 'react-redux';
 
 export const HomeScreen = () => {
 
-    const dispatch = useDispatch();
+    const { loading } = useSelector( state => state.ui );
 
-    const handleUpdate = ()=>{
-        dispatch(startLoadingLines("ENdvLiJJ1hRVcHjKnkG6LU5hb0M2"));
-    }
+    if(loading){
+        return (
+            <>
+                <div className="ui__loader">
+                    <img
+                        src={ loaderGif }
+                        alt="loader"
+                    />
+                </div>
+            </>
+        )
+    } 
     return (
         <>
-            <button onClick={handleUpdate}> UPDATE LINES </button>
                 {/* <div className="ui__search-bar"> SearchComponent </div> */}
                 <div className="home__lines"> 
                     <LinesSection />

@@ -8,7 +8,9 @@ import { PublicRoute } from './PublicRoute'
 import { firebase } from '../firebase/firebaseConfig'
 import { login, startLoadingUser} from '../redux/actions/auth'
 import loaderGif from "../assets/loader.gif";
-import { startLoadingBranches, startLoadingCompanies } from '../redux/actions/companies'
+import { startLoadingBranches, startLoadingCompanies, startLoadingServices } from '../redux/actions/companies'
+import { finishLoading, startLoading } from '../redux/actions/ui'
+import { startLoadingLines } from '../redux/actions/lines'
 
 // import { startLoadingAllIdeas, startLoadingIdeas } from '../actions/idea'
 
@@ -28,11 +30,12 @@ export const AppRouter = () => {
                 dispatch( login( user.uid ) ); // TODO: Traer dinámico el rol
                 setIsLoggedIn(true);
                 dispatch ( startLoadingUser (user.uid ) );
+                dispatch( startLoading());
                 dispatch ( startLoadingCompanies () );
                 dispatch ( startLoadingBranches () );
-                // dispatch ( startLoadingUser (user.uid ) );
-                // dispatch ( startLoadingIdeas ( user.uid ) );
-                // dispatch ( startLoadingAllIdeas ( ) );
+                dispatch( finishLoading());
+                dispatch ( startLoadingServices () );
+                dispatch (startLoadingLines(user.uid));
             } else {
                 setIsLoggedIn(false);
             }
@@ -50,7 +53,6 @@ export const AppRouter = () => {
                         src={ loaderGif }
                         alt="loader"
                     />
-                    {/* <h1>Cargando</h1> */}
                 </div>
             </>
         )

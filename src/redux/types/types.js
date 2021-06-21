@@ -17,6 +17,8 @@ export const types = {
     companyLoadCompanies: '[Company] Load companies',
     companyLoadBranches: '[Company] Load branches',
     companyLoadServices: '[Company] Load services',
+    companyLoadCompanyBranches:'[Company] Load company branches',
+    companyLoadBranchServices:'[Company] Load branch services',
     companyAddCompany: '[Company] Add company',
     companyAddBranch: '[Company] Add branch',
     companyAddService: '[Company] Add service',

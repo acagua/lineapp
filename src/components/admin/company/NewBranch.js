@@ -14,7 +14,7 @@ export const NewBranch = () => {
 
     const initState = {
         id: `${new Date().getTime()}`,
-        company: admin.companies[0]?.id,
+        company: '',
         name:'',
         address:'',
         latitude:'',
@@ -89,7 +89,9 @@ export const NewBranch = () => {
                 </div>
             </>
         )
-    } else if(!formValues.company) {
+    } 
+    
+    if(!formValues.company) {
         setFormValues({
             ...formValues,
             company:admin.companies[0]?.id
@@ -142,7 +144,7 @@ export const NewBranch = () => {
 
     return (
         <div className="admin__main">
-            <h1 className="admin__title"> New Brach </h1>
+            <h1 className="admin__title"> New Branch </h1>
             <form className="admin__form" onSubmit={handleSubmit}>
                 <label>
                     Company
