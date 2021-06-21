@@ -18,6 +18,7 @@ export const CompanyServiceScreen = () => {
 
     const [branchesLoaded, setBranchesLoaded] = useState(false);
     const [servicesLoaded, setServicesLoaded] = useState(false);
+    const [queueAdded, setQueueAdded] = useState(false);
 
     const company = user.companies.find(company => company.id === companyId);
     const branch = user.branches.find(branch => branch.id === branchId);
@@ -80,6 +81,10 @@ export const CompanyServiceScreen = () => {
 
     const handleSubmitAdd = () =>{
         dispatch ( startAddingToQueue(uid, companyId, companyName, branchId, branchName, serviceId, name, queueTime ));
+        setQueueAdded(true);
+    }
+
+    if(queueAdded){
         return <Redirect to ="/" />
     }
 
