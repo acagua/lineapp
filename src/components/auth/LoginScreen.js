@@ -13,8 +13,8 @@ const errorInitState = {
 
 export const LoginScreen = () => {
     const [formValues, setFormValues] = useState({
-        email: "andrescagua@gmail.com",
-        password: "123456"
+        email: "",
+        password: ""
     });
 
     const dispatch = useDispatch();

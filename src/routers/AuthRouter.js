@@ -2,18 +2,17 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { RegisterScreen } from '../components/auth/RegisterScreen';
-// import logo from '../assets/logo.png';
+import logo from '../assets/logo-w.png';
 
 export const AuthRouter = () => {
 
     return (
         <div className="auth__main">
-            {/* <img
+            <img
                 src={ logo }
                 alt="logo"
                 className="auth__logo"
-            /> */}
-            <p> LINE-APP </p>
+            />
             <div className="auth__box-container">
                 <Switch>
                     <Route 

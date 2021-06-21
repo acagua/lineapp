@@ -34,6 +34,10 @@ export const companyReducer = (state =initState, action) => {
                 admin:{
                     ...state.admin,
                     companies:[...state.admin.companies, action.payload]
+                },
+                user:{
+                    ...state.user,
+                    companies:[...state.user.companies, action.payload]
                 }
             }
         case types.companyLoadBranches:
@@ -84,6 +88,8 @@ export const companyReducer = (state =initState, action) => {
                     services:[...state.admin.services, action.payload]
                 }
             }
+        case types.companyLogoutCleaning:
+            return initState
         default:
             return state;
     }

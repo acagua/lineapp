@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -27,6 +27,22 @@ export const NewService = () => {
     const { company, branch, name, minutesPerUser, attendingResources} = formValues;
     
     const [serviceCreated, setServiceCreated] = useState(false);
+
+    useEffect(() => {
+        setFormValues (
+            (formValues) => (
+                {
+                    ...formValues, 
+                    branch:(admin.branches.filter(branch => branch.company === company)[0]?.id)
+                }
+            )
+        )
+        // setFormValues({
+        //     ...formValues,
+        //     branch:(admin.branches.filter(branch => branch.company === company)[0]?.id)
+        // })
+        
+    }, [company, admin.branches, setFormValues])
 
     if(loading){
         return (

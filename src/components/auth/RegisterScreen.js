@@ -5,17 +5,19 @@ import validator from 'validator';
 
 import { useForm } from '../../hooks/useForm'
 import { startRegister } from '../../redux/actions/auth';
+import { userRoles } from '../../lists/userRoles';
 
 const errorInitState = {
     error: false,
     errMessage: "",
   }
   const initialForm = {
-      name: 'Andres',
-      email: 'andrescagua@gmail.com',
-      phone: '3138891481',
-      password: '123456',
-      password2: '123456',
+      name: '',
+      email: '',
+      phone: '',
+      password: '',
+      password2: '',
+      role: userRoles.user,
     }
     
     export const RegisterScreen = () => {
@@ -31,13 +33,13 @@ const errorInitState = {
 
     const [ formValues, handleInputChange ] = useForm(initialForm);
 
-    const {name,email, phone, password, password2} = formValues;
+    const {name, email, phone, role, password, password2} = formValues;
    
     const handleRegister = (e) => {
         e.preventDefault();
         if(isFormValid()){
             
-            dispatch(startRegister(email, password, name, phone));
+            dispatch(startRegister(email, password, name, phone, role));
         }
     }
 

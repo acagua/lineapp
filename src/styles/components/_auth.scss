@@ -3,7 +3,7 @@
     background-color: darken($color: $primary, $amount: 20);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
     margin: 0px;
     height: 100vh;
     width: 100vw;
@@ -43,4 +43,10 @@
         border-bottom: 1px solid $primary;
         outline: none;
     }
+}
+
+.auth__logo {
+    width:100px;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }

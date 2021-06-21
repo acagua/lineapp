@@ -3,6 +3,8 @@ import { db, firebase } from '../../firebase/firebaseConfig'
 import { finishLoading, startLoading } from "./ui";
 import { loadUser } from "../../helpers/loadUser";
 import Swal from 'sweetalert2';
+import { companiesLogout } from "./companies";
+import { linesLogout } from "./lines";
 
 //return si es asincrono, sin return si no lo es
 export const startLoginEmailPassword = (email, password) => {
@@ -11,9 +13,10 @@ export const startLoginEmailPassword = (email, password) => {
         dispatch( startLoading() );
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(({ user }) => {
+            .then(async({ user }) => {
                 
-                dispatch( login(user.uid) );
+                await dispatch(startLoadingUser(user.uid));
+                // dispatch( login(user.uid) );
                 dispatch( finishLoading());
             }).catch( ({ message }) => {
                 dispatch( finishLoading()); // podría ser en el finally pero complica el manejo de error con swal
@@ -22,7 +25,7 @@ export const startLoginEmailPassword = (email, password) => {
     }
 }
 
-export const startRegister = (email, password, name, phone) => {
+export const startRegister = (email, password, name, phone, role) => {
     return (dispatch) => {
         dispatch( startLoading() );
         firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -35,9 +38,11 @@ export const startRegister = (email, password, name, phone) => {
                 .set({
                     name,
                     phone,
+                    role, 
                 })
 
-                dispatch (login (user.uid));
+                await dispatch (startLoadingUser(user.uid));
+                // dispatch (login (user.uid));
                 dispatch( finishLoading());
 
             })
@@ -57,22 +62,22 @@ export const startRegister = (email, password, name, phone) => {
 //     }
 // }
 
-export const login = (uid) => ({
-    type: types.login,
-    payload: {
-        uid
-    }
-});
+// export const login = (uid) => ({
+//     type: types.login,
+//     payload: {
+//         uid
+//     }
+// });
 
 export const startLoadingUser = ( uid ) =>{
     return async ( dispatch ) => {
         const user = await loadUser ( uid );
-        dispatch( setLoadedUser ( user ) );
+        dispatch( setLoadedUser (uid, user) );
     }
 }
-export const setLoadedUser = ( user ) => ({
+export const setLoadedUser = ( uid, user ) => ({
     type: types.authLoadUser,
-    payload: user
+    payload: {uid, user}
 })
 
 
@@ -81,8 +86,9 @@ export const startLogout = () => {
         await firebase.auth().signOut();
 
         dispatch ( logout() );
+        dispatch( companiesLogout());
+        dispatch( linesLogout());
 
-        // dispatch ( noteLogout() );
     }
 }
 export const logout = () => ({

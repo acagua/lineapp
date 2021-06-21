@@ -76,10 +76,11 @@ export const CompanyServiceScreen = () => {
     }
 
     const {name, attendingResources, queue, minutesPerUser}= service;
-    const queueTime = parseFloat(minutesPerUser)*parseFloat(queue.length)/parseFloat(attendingResources);
+    const queueTime = Math.ceil(parseFloat(minutesPerUser)*parseFloat(queue.length)/parseFloat(attendingResources));
 
     const handleSubmitAdd = () =>{
         dispatch ( startAddingToQueue(uid, companyId, companyName, branchId, branchName, serviceId, name, queueTime ));
+        return <Redirect to ="/" />
     }
 
     return (

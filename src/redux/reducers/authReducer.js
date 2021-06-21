@@ -16,7 +16,8 @@ export const authReducer = (state = {uid:'', data:{}}/*initState*/, action) => {
         case types.authLoadUser:
             return {
                 ...state,
-                data: action.payload
+                uid: action.payload.uid,
+                data: action.payload.user
             }
         case types.logout:
             return { };

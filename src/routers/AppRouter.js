@@ -6,7 +6,7 @@ import { DashboardRoutes } from './DashboardRoutes'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'
 import { firebase } from '../firebase/firebaseConfig'
-import { login, startLoadingUser} from '../redux/actions/auth'
+import { startLoadingUser} from '../redux/actions/auth'
 import loaderGif from "../assets/loader.gif";
 import { startLoadingBranches, startLoadingCompanies, startLoadingServices } from '../redux/actions/companies'
 import { finishLoading, startLoading } from '../redux/actions/ui'
@@ -24,18 +24,18 @@ export const AppRouter = () => {
 
     useEffect(() => {
         
-        firebase.auth().onAuthStateChanged( (user) => { //observable
+        firebase.auth().onAuthStateChanged( async(user) => { //observable
             
             if(user?.uid){
-                dispatch( login( user.uid ) ); // TODO: Traer dinámico el rol
+                // dispatch( login( user.uid ) ); // TODO: Traer dinámico el rol
+                await dispatch ( startLoadingUser (user.uid ) );
                 setIsLoggedIn(true);
-                dispatch ( startLoadingUser (user.uid ) );
                 dispatch( startLoading());
                 dispatch ( startLoadingCompanies () );
                 dispatch ( startLoadingBranches () );
+                dispatch (startLoadingLines(user.uid));
                 dispatch( finishLoading());
                 dispatch ( startLoadingServices () );
-                dispatch (startLoadingLines(user.uid));
             } else {
                 setIsLoggedIn(false);
             }

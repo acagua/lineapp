@@ -9,7 +9,7 @@ export const Card = ({title='NO TITLE', type, branchName, serviceName, timeRemai
     //Test: Look if its better only text than changing color to the whole card
     let cardStyle = '';
     let remainingTimeStyle = '';
-    if(timeRemaining){
+    if(timeRemaining !== null){
         if (timeRemaining < timeAlerts.now){
             // cardStyle = 'ui__card-now';
             remainingTimeStyle = 'ui__text-now';
@@ -29,9 +29,9 @@ export const Card = ({title='NO TITLE', type, branchName, serviceName, timeRemai
                     {
                         (type === cardTypes.line) &&
                             <div>
-                                <p> <b>BranchId:</b> {branchName} </p>
-                                <p> <b>ServiceId:</b> {serviceName} </p>
-                                <p className={`${remainingTimeStyle}`}> <b>Remaining Time:</b> {timeRemaining} </p>
+                                <p> <b>Branch:</b> {branchName} </p>
+                                <p> <b>Service:</b> {serviceName} </p>
+                                <p className={`${remainingTimeStyle}`}> <b>Time Remaining:</b> {timeRemaining} </p>
                             </div>
                     }
 

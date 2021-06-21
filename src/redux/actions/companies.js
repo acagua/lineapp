@@ -175,3 +175,7 @@ export const loadedBranchServices = (services) => ({
     type: types.companyLoadBranchServices,
     payload: services
 });
+
+export const companiesLogout = () => ({
+    type: types.companyLogoutCleaning,
+});

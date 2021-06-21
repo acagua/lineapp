@@ -12,7 +12,9 @@ export const types = {
     uiCloseModal: '[UI] Close Modal',
 
     lineAddNewLine: '[Lines] Add new line',
-    lineLoadLines: '[Lines] Load line lines',
+    lineLoadLines: '[Lines] Load lines',
+    lineLeaveLine: '[Lines] Leave line',
+    lineLogoutCleaning: '[Lines] Logout clean',
 
     companyLoadCompanies: '[Company] Load companies',
     companyLoadBranches: '[Company] Load branches',
@@ -22,5 +24,6 @@ export const types = {
     companyAddCompany: '[Company] Add company',
     companyAddBranch: '[Company] Add branch',
     companyAddService: '[Company] Add service',
+    companyLogoutCleaning: '[Company] Logout clean',
 
 }

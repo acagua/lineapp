@@ -19,6 +19,13 @@ export const linesReducer = (state = initialState, action) => {
                 ...state,
                 lines:action.payload
             }
+        case types.lineLeaveLine:
+            return {
+                ...state,
+                lines: action.payload.lines.filter(line => (line.id !== action.payload.id))
+            }
+        case types.lineLogoutCleaning:
+            return initialState;
         default:
             return state
     }
