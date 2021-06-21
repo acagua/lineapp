@@ -5,6 +5,7 @@ import { startLoadingBranchServices, startLoadingCompanyBranches } from '../../r
 import { Card } from '../ui/Card';
 import loaderGif from "../../assets/loader.gif";
 import Swal from 'sweetalert2';
+import { isOpen } from '../../utils/time';
 
 export const CompanyBranchScreen = () => {
 
@@ -65,6 +66,11 @@ export const CompanyBranchScreen = () => {
         Swal.fire('Sorry!', 'That branch doesn\'t have services created. Please try on other branches.' ,'error');
         return <Redirect to={`/company/${company.id}/branch/${branch.id}`} />
     }
+    
+    const nowDate = new Date(); 
+
+    const {startHour, endHour, open} = openHours.find( day => (nowDate.getDay() === day.day));
+
 
     return (
         <div>
@@ -75,6 +81,7 @@ export const CompanyBranchScreen = () => {
                     openHours.map((day, index) => (
                         <li
                             key={index}
+                            className={(day.day === nowDate.getDay())?(open && isOpen(nowDate, startHour, endHour))?'ui__text-wait':'ui__text-now':''}
                         >
                             {day.name.charAt(0).toUpperCase() + day.name.substring(1,3)} : {(day.open)? `${day.startHour} - ${day.endHour}` : 'Closed'}
                         </li>
@@ -86,10 +93,10 @@ export const CompanyBranchScreen = () => {
                 {
                     services.map( (service, index) => (
                         <Card 
-                        key={index}
-                        title={service.name}
-                        {...service}
-                        link={`/company/${companyId}/branch/${branchId}/service/${service.id}`}
+                            key={index}
+                            title={service.name}
+                            {...service}
+                            link={`/company/${companyId}/branch/${branchId}/service/${service.id}`}
                         />
                         ))
                 }

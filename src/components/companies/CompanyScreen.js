@@ -17,7 +17,6 @@ export const CompanyScreen = () => {
     const dispatch = useDispatch();
 
     const company = user.companies.find(company => company.id === companyId);
-    console.log(company);
 
     const branches = user.branches;
     

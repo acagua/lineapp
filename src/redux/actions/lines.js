@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { loadLines, loadLinesInfoBranches, loadLinesInfoCompanies } from "../../helpers/loadLines";
 
 
-export const startAddingToQueue = (uid, companyId, branchId, serviceId, queueTime) => {
+export const startAddingToQueue = (uid, companyId, companyName, branchId, branchName, serviceId, name, queueTime) => {
     return async (dispatch) => {
         dispatch( startLoading());
         const queueFirebase = await db.collection(`companies/${companyId}/branches/${branchId}/services`).doc(serviceId).get();
@@ -17,22 +17,26 @@ export const startAddingToQueue = (uid, companyId, branchId, serviceId, queueTim
             queue: [...queue, uid],
         });
         Swal.fire('Success','Your are know in line, keep checking your line status for any updates', 'success')
-        dispatch (addedToQueue (uid, companyId, branchId, serviceId,queueTime));
+        dispatch (addedToQueue (uid, companyId, companyName, branchId, branchName, serviceId, name, queueTime));
         dispatch( finishLoading());
     }
     
 }
 
-export const addedToQueue = (uid, companyId, branchId, serviceId, queueTime) => ({
+export const addedToQueue = (uid, companyId, companyName, branchId, branchName, serviceId, serviceName, queueTime) => ({
+
+    
     type: types.lineAddNewLine,
     payload: {
-        id:`${new Date().getTime()}`,
+        id: serviceId,
         uid,
         companyId,
+        companyName,
         branchId,
+        branchName,
         serviceId,
+        serviceName,
         timeRemaining:queueTime
-
     }
 });
 

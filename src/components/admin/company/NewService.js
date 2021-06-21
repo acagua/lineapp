@@ -8,8 +8,9 @@ import loaderGif from "../../../assets/loader.gif";
 export const NewService = () => {
 
     const { admin } = useSelector( state => state.companies );
-    
     const { loading } = useSelector( state => state.ui );
+    
+    const dispatch = useDispatch();
 
     const initState = {
         id: `${new Date().getTime()}`,
@@ -26,8 +27,6 @@ export const NewService = () => {
     const { company, branch, name, minutesPerUser, attendingResources} = formValues;
     
     const [serviceCreated, setServiceCreated] = useState(false);
-
-    const dispatch = useDispatch();
 
     if(loading){
         return (
